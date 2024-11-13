@@ -4,12 +4,19 @@ import { BottomNavigation } from "../../shared-components/bottom-navigation/inde
 import { Title1 } from "../../shared-components/Typography/Title1/index.tsx";
 import cafePicture from "../../assets/coffeemania.jpg";
 import { SearchBar } from "../../shared-components/SearchBar/index.tsx";
+import { LeftSideBar } from "../../shared-components/leftside-bar/index.tsx";
+import { ProductCard } from "../../shared-components/Product-card/index.tsx";
 
 export const Home = () => {
   return (
     <Container
       component="main"
-      sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+        padding: "10px 0px",
+      }}
     >
       <Stack flexGrow={1} direction="row" justifyContent="space-between">
         <Stack direction="column" alignItems="flex-start">
@@ -20,6 +27,15 @@ export const Home = () => {
       </Stack>
       <Box>
         <SearchBar />
+      </Box>
+      <Box>
+        <LeftSideBar />
+      </Box>
+      <Box>
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
       </Box>
       <Box
         sx={{
