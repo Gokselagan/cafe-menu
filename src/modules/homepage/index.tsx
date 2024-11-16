@@ -6,8 +6,10 @@ import cafePicture from "../../assets/coffeemania.jpg";
 import { SearchBar } from "../../shared-components/SearchBar/index.tsx";
 import { LeftSideBar } from "../../shared-components/leftside-bar/index.tsx";
 import { ProductCard } from "../../shared-components/Product-card/index.tsx";
+import { MenuItem } from "../../data/menuItems.tsx";
+import { hotDrinks } from "../../data/menuItems.tsx";
 
-export const Home = () => {
+export const Home = ({ hotItems }: { hotItems: MenuItem[] }) => {
   return (
     <Container
       component="main"
@@ -15,34 +17,56 @@ export const Home = () => {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
-        padding: "10px 0px",
+        paddingTop: "10px",
+        width: "375px",
       }}
     >
-      <Stack flexGrow={1} direction="row" justifyContent="space-between">
-        <Stack direction="column" alignItems="flex-start">
-          <Title1 color={"#2c1e1e"}>Coffeemania</Title1>
-          <Title1 color={"#fff"}>Next</Title1>
+      <Stack>
+        <Stack flexGrow={1} direction="row" justifyContent="space-between">
+          <Stack direction="column" alignItems="flex-start">
+            <Title1 color={"#2c1e1e"}>Coffeemania</Title1>
+            <Title1 color={"#fff"}>Next</Title1>
+          </Stack>
+          <Avatar alt="Cafe picture" src={cafePicture} />
         </Stack>
-        <Avatar alt="Cafe picture" src={cafePicture} />
+        <Box mt={2}>
+          <SearchBar />
+        </Box>
       </Stack>
-      <Box>
-        <SearchBar />
-      </Box>
-      <Box>
-        <LeftSideBar />
-      </Box>
-      <Box>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-      </Box>
+
+      <Stack direction="row" gap="40px" flexGrow={1} alignItems="center" mt={4}>
+        <Box marginLeft="-48px">
+          <LeftSideBar />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            gap: "10px",
+            width: "100%",
+            maxWidth: "500px",
+          }}
+        >
+          {hotItems.map((hotItem) => (
+            <ProductCard
+              key={hotItem.id}
+              image={hotItem.image}
+              name={hotItem.name}
+              description={hotItem.description}
+            />
+          ))}
+        </Box>
+      </Stack>
+
       <Box
         sx={{
+          mt: "auto",
           bgcolor: "#2c1e1e",
           color: "#fff",
           borderRadius: "24px",
           width: "100%",
+          mb: "20px",
         }}
       >
         <BottomNavigation />

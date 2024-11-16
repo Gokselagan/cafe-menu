@@ -5,23 +5,44 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 
-export const ProductCard = () => {
+interface ProductCardProps {
+  image: string;
+  name: string;
+  description: string;
+}
+
+export const ProductCard = ({ image, name, description }: ProductCardProps) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      sx={{
+        maxWidth: 145,
+        maxHeight: 145,
+        width: "45%",
+        borderRadius: "24px 24px 4px 4px",
+      }}
+    >
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          height="50"
+          image={image}
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
+          <Typography
+            gutterBottom
+            component="div"
+            fontSize="10px"
+            fontWeight="bold"
+          >
+            {name}
           </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+          <Typography
+            fontSize="8px"
+            textAlign="left"
+            sx={{ color: "text.secondary" }}
+          >
+            {description}
           </Typography>
         </CardContent>
       </CardActionArea>

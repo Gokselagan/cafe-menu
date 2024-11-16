@@ -23,15 +23,3 @@ code {
   border-radius: 24px;
   display: flex;
 }
-
-@media (min-width: 600px) {
-  .app {
-    width: 48%; 
-  }
-}
-
-@media (min-width: 1024px) {
-  .app {
-    width: 23%; 
-  }
-}

@@ -1,6 +1,7 @@
 import HomeIcon from "@mui/icons-material/Home";
 import { Stack, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const BottomNavigation: React.FC = () => {
   return (
@@ -12,13 +13,13 @@ export const BottomNavigation: React.FC = () => {
         bgcolor: "#2c1e1e",
         color: "#fff",
         borderRadius: "24px",
-        padding: "10px",
+        padding: "5px",
       }}
     >
-      <div>
+      <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
         <HomeIcon fontSize="large" />
         <Typography fontSize="small">Home</Typography>
-      </div>
+      </Link>
     </Stack>
   );
 };

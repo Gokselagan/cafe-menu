@@ -1,11 +1,17 @@
 import React from "react";
-import "./App.css";
 import { Home } from "./modules/homepage/index.tsx";
+import { hotDrinks } from "./data/menuItems.tsx";
+import { Container } from "@mui/material";
+import { AppRouter } from "./AppRouter.tsx";
 
 export const App = () => {
   return (
-    <div className="app">
-      <Home />
-    </div>
+    <Container
+      className="app"
+      maxWidth={false}
+      sx={{ maxWidth: "375px", height: "820px" }}
+    >
+      <AppRouter />
+    </Container>
   );
 };
