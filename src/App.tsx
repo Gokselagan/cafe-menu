@@ -3,6 +3,7 @@ import { Container, Avatar, Box, Stack } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import { Title, LeftSidebar, SearchBar, BottomNavigation } from "./_shared";
 import CategoryItem from "./modules/category";
+import HomePage from "./modules/homepage";
 
 const App = () => {
   return (
@@ -48,8 +49,7 @@ const App = () => {
             sx={{
               flex: 1,
               overflow: "auto",
-              height: "100%",
-              padding: "16px",
+              height: "500px",
             }}
           >
             <Routes>
@@ -69,7 +69,7 @@ const App = () => {
                 path="desserts"
                 element={<CategoryItem section="desserts" />}
               />
-              <Route path="/" element={<CategoryItem section="hotDrinks" />} />
+              <Route path="/" element={<HomePage />} />
             </Routes>
           </Box>
         </Stack>
@@ -86,7 +86,6 @@ const App = () => {
           <BottomNavigation />
         </Box>
       </Container>
-      {/* <AppRouter /> */}
     </Container>
   );
 };

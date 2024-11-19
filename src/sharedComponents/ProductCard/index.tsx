@@ -15,13 +15,13 @@ const ProductCard = ({ image, name, description }: ProductCardProps) => (
   <Card
     sx={{
       maxWidth: 145,
-      maxHeight: 185,
+      maxHeight: 165,
       width: "45%",
       borderRadius: "24px 24px 4px 4px",
     }}
   >
     <CardActionArea>
-      <CardMedia component="img" height="100" image={image} alt="ürün resmi" />
+      <CardMedia component="img" height="95" image={image} alt="ürün resmi" />
       <CardContent>
         <Typography
           gutterBottom
