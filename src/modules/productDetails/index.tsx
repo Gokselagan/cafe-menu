@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { items } from "../../_shared";
 import {
+  Box,
   Dialog,
   DialogContent,
   IconButton,
@@ -46,19 +47,31 @@ const ProductDetails = () => {
       <Typography variant="h4" sx={{ color: "#fff", textAlign: "center" }}>
         {product?.name}
       </Typography>
-      <IconButton onClick={handleGoBack}>
-        <ArrowBack />
-      </IconButton>
-      <img
-        src={product?.image}
-        alt={product?.name}
-        width="250px"
-        height="250px"
-        style={{
-          borderRadius: "24px",
-        }}
-        onClick={handleImageClick}
-      />
+      <Box sx={{ display: "flex", mr: "30px" }}>
+        <IconButton
+          onClick={handleGoBack}
+          sx={{
+            color: "#fff",
+            "&:hover": {
+              backgroundColor: "transparent",
+              boxShadow: "none",
+            },
+          }}
+        >
+          <ArrowBack fontSize="large" />
+        </IconButton>
+
+        <img
+          src={product?.image}
+          alt={product?.name}
+          width="200px"
+          height="250px"
+          style={{
+            borderRadius: "24px",
+          }}
+          onClick={handleImageClick}
+        />
+      </Box>
       <Dialog open={openDialog} onClose={handleCloseDialog}>
         <DialogContent
           sx={{
@@ -73,8 +86,8 @@ const ProductDetails = () => {
             src={product?.image}
             alt={product?.name}
             style={{
-              maxWidth: "350px",
-              maxHeight: "90vh",
+              maxWidth: "400px",
+              maxHeight: "400px",
               objectFit: "contain",
             }}
           />
