@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { Title, LeftSidebar, SearchBar, BottomNavigation } from "./_shared";
 import CategoryItem from "./modules/category";
 import HomePage from "./modules/homepage";
+import ProductDetails from "./modules/productDetails";
 
 const App = () => {
   return (
@@ -28,7 +29,7 @@ const App = () => {
               <Title color={"#2c1e1e"}>Coffeemania</Title>
               <Title color={"#fff"}>Next</Title>
             </Stack>
-            <Avatar alt="Cafe picture" src="assets/coffeemania.png" />
+            <Avatar alt="Cafe picture" src="/assets/coffeemania.png" />
           </Stack>
           <Box mt={2}>
             <SearchBar />
@@ -42,7 +43,7 @@ const App = () => {
           alignItems="center"
           mt={4}
         >
-          <Box marginLeft="-48px">
+          <Box marginLeft="-51px">
             <LeftSidebar />
           </Box>
           <Box
@@ -68,6 +69,10 @@ const App = () => {
               <Route
                 path="desserts"
                 element={<CategoryItem section="desserts" />}
+              />
+              <Route
+                path="/:category/:productName"
+                element={<ProductDetails />}
               />
               <Route path="/" element={<HomePage />} />
             </Routes>

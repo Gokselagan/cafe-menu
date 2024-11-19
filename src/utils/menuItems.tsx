@@ -15,7 +15,12 @@ type MenuItems = {
   desserts: MenuItem;
 };
 
-const items: MenuItems = {} as MenuItems;
+const items: MenuItems = {
+  hotDrinks: {},
+  coldDrinks: {},
+  sandwiches: {},
+  desserts: {},
+};
 
 // # Hot Drinks ---------------- //
 items.hotDrinks = {
