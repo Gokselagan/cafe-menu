@@ -5,6 +5,7 @@ import { Title, LeftSidebar, SearchBar, BottomNavigation } from "./_shared";
 import CategoryItem from "./modules/category";
 import HomePage from "./modules/homepage";
 import ProductDetails from "./modules/productDetails";
+import SearchResults from "./modules/searchResults";
 
 const App = () => {
   return (
@@ -74,6 +75,7 @@ const App = () => {
                 path="/:category/:productName"
                 element={<ProductDetails />}
               />
+              <Route path="/search" element={<SearchResults />} />
               <Route path="/" element={<HomePage />} />
             </Routes>
           </Box>

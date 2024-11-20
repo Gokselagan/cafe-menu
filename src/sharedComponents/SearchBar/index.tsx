@@ -2,6 +2,7 @@ import { alpha, InputBase, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
 import { items } from "../../_shared";
+import { useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -47,6 +48,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredItems, setFilteredItems] = useState<{ name: string }[]>([]);
+  const navigate = useNavigate();
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value.toLowerCase();
@@ -61,6 +63,12 @@ const SearchBar = () => {
       });
     });
     setFilteredItems(results);
+
+    if (query) {
+      navigate("/search", { state: { results } });
+    } else {
+      navigate("/");
+    }
   };
 
   return (
