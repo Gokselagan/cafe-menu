@@ -1,6 +1,7 @@
-import React from "react";
 import { alpha, InputBase, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useState } from "react";
+import { items } from "../../_shared";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -43,16 +44,38 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const SearchBar = () => (
-  <Search>
-    <SearchIconWrapper>
-      <SearchIcon />
-    </SearchIconWrapper>
-    <StyledInputBase
-      placeholder="Browse your favourite..."
-      inputProps={{ "aria-label": "search" }}
-    />
-  </Search>
-);
+const SearchBar = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredItems, setFilteredItems] = useState<{ name: string }[]>([]);
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    const results: { name: string }[] = [];
+    Object.values(items).forEach((category) => {
+      Object.values(category).forEach((item) => {
+        if (item.name.toLowerCase().includes(query)) {
+          results.push(item);
+        }
+      });
+    });
+    setFilteredItems(results);
+  };
+
+  return (
+    <Search>
+      <SearchIconWrapper>
+        <SearchIcon />
+      </SearchIconWrapper>
+      <StyledInputBase
+        placeholder="Browse your favourite..."
+        inputProps={{ "aria-label": "search" }}
+        value={searchQuery}
+        onChange={handleSearch}
+      />
+    </Search>
+  );
+};
 
 export default SearchBar;
