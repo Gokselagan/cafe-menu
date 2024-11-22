@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const HomePage = () => {
   const [colorIndex, setColorIndex] = useState(0);
 
-  const colors = ["#fff", "#c2a679", "#773301"];
+  const colors = ["#fff", "#7d3a09", "#773301"];
   const animationDuration = 6500;
   const colorsChangeInterval = animationDuration / (colors.length - 1);
 
