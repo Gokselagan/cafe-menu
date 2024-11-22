@@ -58,7 +58,7 @@ const SearchResults = () => {
           )}
         </Box>
       ) : (
-        <p>No data found</p>
+        <Player autoplay loop src="/assets/notFound.json" />
       )}
     </div>
   );
