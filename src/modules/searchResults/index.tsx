@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { ProductCard } from "../../_shared";
 import { Box, Typography } from "@mui/material";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 const SearchResults = () => {
   const location = useLocation();
   const results = location.state?.results || [];
-  console.log("eeerere", results);
   return (
     <div>
       <Typography
@@ -41,18 +41,24 @@ const SearchResults = () => {
               name: string;
               description: string;
               image: string;
+              category: string;
             }) => (
-              <ProductCard
-                key={res.id}
-                image={res.image}
-                name={res.name}
-                description={res.description}
-              />
+              <Link
+                to={`/${res.category}/${res.name}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <ProductCard
+                  key={res.id}
+                  image={res.image}
+                  name={res.name}
+                  description={res.description}
+                />
+              </Link>
             )
           )}
         </Box>
       ) : (
-        <p>No results found.</p>
+        <p>No data found</p>
       )}
     </div>
   );
